@@ -28,7 +28,7 @@ dependencyResolutionManagement {
     }
 }
 
-include(":composeApp")
+include(":sample")
 include(":dextension-core")
 include(":dextension-compose")
 include(":dextension-koin")
