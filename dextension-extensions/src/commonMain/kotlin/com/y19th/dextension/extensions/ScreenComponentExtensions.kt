@@ -1,5 +1,6 @@
 package com.y19th.dextension.extensions
 
+import com.arkivanov.essenty.lifecycle.coroutines.repeatOnLifecycle
 import com.y19th.dextension.core.ScreenComponent
 import com.y19th.dextension.extensions.coroutine.CoroutineScheduler
 import com.y19th.dextension.extensions.coroutine.Scheduler
@@ -18,6 +19,8 @@ fun ScreenComponent<*, *>.scheduleCoroutine(
     )
 
     scope.launch(Dispatchers.Default) {
-        scheduler.start()
+        repeatOnLifecycle {
+            scheduler.start()
+        }
     }
 }
