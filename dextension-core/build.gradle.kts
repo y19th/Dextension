@@ -8,6 +8,8 @@ plugins {
 }
 
 android.namespace = "com.y19th.dextension.core"
+val currentVersion = project.findProperty("current.pom.version")
+    ?.toString()
 
 kotlin {
     sourceSets {
@@ -26,7 +28,7 @@ publishing.publications
     .withType<MavenPublication>()
     .configureEach {
         groupId = "io.github.y19th"
-        version = "1.0.0"
+        version = currentVersion
 
         pom {
             name = "Dextension"
