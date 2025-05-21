@@ -17,7 +17,7 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
     protected val _state: MutableStateFlow<State> = MutableStateFlow(initialState)
     val state = _state.asStateFlow()
 
-    protected val storage: ComponentEventsStorage by lazy { ComponentEventsStorageImpl() }
+    protected val storage: ComponentEventsStorage by lazy { ComponentEventsStorageProvider.get() }
 
 
     protected inline fun <Result> withState(block: State.() -> Result): Result {

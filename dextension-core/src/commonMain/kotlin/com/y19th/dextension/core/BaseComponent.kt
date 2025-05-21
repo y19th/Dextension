@@ -6,12 +6,11 @@ import com.y19th.dextension.core.util.screenCoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import org.koin.core.component.KoinComponent
 
 abstract class BaseComponent(
     componentContext: ComponentContext,
     coroutineExceptionHandler: CoroutineExceptionHandler? = null
-) : KoinComponent, ComponentContext by componentContext {
+) : ComponentContext by componentContext {
 
     private val tag = this::class.simpleName
     val scope = coroutineScope(

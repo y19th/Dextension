@@ -40,7 +40,6 @@ kotlin {
             dependencies {
                 api(libs.decompose)
                 api(libs.decompose.coroutine)
-                api(libs.koin.core)
                 api(libs.kermit)
                 api(libs.kotlinx.coroutines.core)
             }

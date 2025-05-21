@@ -5,11 +5,11 @@ import com.arkivanov.decompose.router.stack.bringToFront
 
 internal class MainNavigatorImpl : MainNavigator {
     override fun toEnd() {
-        handleConfiguration(MainConfiguration.EndConfiguration)
+        handleConfiguration(MainConfiguration.End)
     }
 
     override fun toStart() {
-        handleConfiguration(MainConfiguration.StartConfiguration)
+        handleConfiguration(MainConfiguration.Start)
     }
 
     override val navigation: StackNavigation<MainConfiguration> = StackNavigation()

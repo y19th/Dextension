@@ -15,10 +15,8 @@ internal class StartComponent(
     initialState = StartState()
 ) {
     init {
-        launch {
-            scheduleCoroutine(1000) {
-                update { copy(counter = counter.plus(1)) }
-            }
+        scheduleCoroutine(1000) {
+            update { copy(counter = counter.plus(1)) }
         }
     }
 

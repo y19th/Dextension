@@ -6,8 +6,11 @@ import kotlinx.serialization.Serializable
 sealed interface MainConfiguration {
 
     @Serializable
-    data object StartConfiguration: MainConfiguration
+    data object Start: MainConfiguration
 
     @Serializable
-    data object EndConfiguration: MainConfiguration
+    data object End: MainConfiguration
+
+    @Serializable
+    data object Slot: MainConfiguration
 }

@@ -13,6 +13,7 @@ internal fun RootContent(component: RootComponent) {
             when (it) {
                 is RootComponent.Child.End -> it.screen
                 is RootComponent.Child.Start -> it.screen
+                is RootComponent.Child.Slot -> it.screen
             }
         )
     }

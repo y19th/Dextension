@@ -15,7 +15,18 @@ interface ComponentEventsStorage {
     fun clear()
 }
 
-internal class ComponentEventsStorageImpl : ComponentEventsStorage {
+internal object ComponentEventsStorageProvider {
+
+    private var _instance: ComponentEventsStorage = DefaultComponentEventsStorageImpl()
+
+    fun get(): ComponentEventsStorage = _instance
+
+    fun provide(instance: ComponentEventsStorage) {
+        _instance = instance
+    }
+}
+
+internal class DefaultComponentEventsStorageImpl : ComponentEventsStorage {
 
     private val _events = MutableStateFlow<ComponentEvent?>(null)
     override val events = _events.asStateFlow()
