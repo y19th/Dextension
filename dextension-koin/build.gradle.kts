@@ -1,40 +1,15 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import com.vanniktech.maven.publish.SonatypeHost
 
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinMultiplatform)
-    `maven-publish`
+    alias(libs.plugins.maven.publish.vannitech)
+    id("multiplatform-publish-setup")
 }
 
+android.namespace = "com.y19th.dextension.koin"
+
 kotlin {
-    jvm()
-
-    androidTarget {
-        publishLibraryVariants("release")
-        withSourcesJar(true)
-
-        compilations.all {
-            compileTaskProvider {
-                compilerOptions {
-                    jvmTarget.set(JvmTarget.JVM_11)
-                }
-            }
-        }
-    }
-
-    listOf(
-        iosX64(),
-        iosArm64(),
-        iosSimulatorArm64(),
-        macosX64(),
-        macosArm64()
-    ).forEach { iosTarget ->
-        iosTarget.binaries.framework {
-            baseName = "DextensionKoin"
-            isStatic = true
-        }
-    }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -45,43 +20,39 @@ kotlin {
     }
 }
 
-android {
-    namespace = "com.y19th.dextension.koin"
-    compileSdk = 35
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    buildTypes {
-        release { }
-        debug {}
-    }
-}
-
 publishing.publications
     .withType<MavenPublication>()
     .configureEach {
-        groupId = "com.y19th.dextension"
-        version = "0.0.1"
+        groupId = "io.github.y19th"
+        version = "1.0.0"
 
         pom {
-            name.set("Dextension")
+            name = "Dextension"
+            description = "Decompose extensions"
+            url = "https://github.com/y19th/Dextension"
+
+            licenses {
+                license {
+                    name = "The Apache License, Version 2.0"
+                    url = "https://github.com/y19th/Dextension/blob/master/LICENSE"
+                }
+            }
 
             developers {
                 developer {
-                    id.set("y19th")
-                    name.set("Oleg Agapchenko")
-                    email.set("whenmistdisappear@gmail.com")
+                    id = "y19th"
+                    name = "Oleg Agapchenko"
+                    email = "whenmistdisappear@gmail.com"
                 }
+            }
+
+            scm {
+                url = "https://github.com/y19th/Dextension"
             }
         }
     }
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL, automaticRelease = false)
+    signAllPublications()
+}
