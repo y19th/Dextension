@@ -14,8 +14,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation(projects.dextensionCompose)
-                implementation(libs.koin.core)
+                api(projects.dextensionCompose)
+                api(libs.koin.core)
             }
         }
     }
