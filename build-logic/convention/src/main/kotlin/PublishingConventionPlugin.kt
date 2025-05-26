@@ -6,12 +6,9 @@ import org.gradle.api.Project
 class PublishingConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) {
         with(project) {
-            // Применяем необходимые плагины
-            pluginManager.apply("org.jetbrains.kotlin.multiplatform")
             pluginManager.apply("maven-publish")
             pluginManager.apply("signing")
 
-            // Настройка nexus-publish-plugin
             /*
                         configure<NexusPublishExtension> {
                             repositories {

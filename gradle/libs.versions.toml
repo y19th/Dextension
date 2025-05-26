@@ -1,30 +1,14 @@
 [versions]
-agp = "8.9.3"
-android-compileSdk = "35"
-android-minSdk = "24"
-android-targetSdk = "35"
-androidx-activity = "1.10.1"
-composeMultiplatform = "1.8.0"
-junit = "4.13.2"
+agp = "8.10.0"
+composeMultiplatform = "1.8.1"
 kotlin = "2.1.21"
 decompose = "3.3.0"
 decompose-lifecycle-coroutine = "2.5.0"
 androidx-activityCompose = "1.10.1"
 koinVersion = "4.0.4"
 kermit = "2.0.4"
-coreKtx = "1.16.0"
-junitVersion = "4.13.2"
-androidxJunit = "1.2.1"
-espressoCore = "3.6.1"
-appcompat = "1.7.0"
-material = "1.10.0"
 kotlinx-coroutines = "1.10.2"
-kotlinStdlib = "2.1.21"
-kotlinTest = "2.1.21"
-runner = "1.5.2"
-core = "1.5.0"
 maven-publish = "0.29.0"
-nexus-publish = "2.0.0"
 
 [libraries]
 
@@ -34,19 +18,8 @@ decompose = { module = "com.arkivanov.decompose:decompose", version.ref = "decom
 decompose-coroutine = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "decompose-lifecycle-coroutine" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koinVersion" }
 kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxJunit" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines" }
-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
-kotlin-stdlib = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlinStdlib" }
-kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlinTest" }
-androidx-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
-androidx-core = { group = "androidx.test", name = "core", version.ref = "core" }
 
 compose-gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "composeMultiplatform" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -63,4 +36,3 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish-vannitech = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
-nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish"}

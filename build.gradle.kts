@@ -9,5 +9,4 @@ plugins {
     alias(libs.plugins.kotlinAndroid) apply false
     alias(libs.plugins.androidKotlinMultiplatformLibrary) apply false
     alias(libs.plugins.maven.publish.vannitech) apply false
-    alias(libs.plugins.nexus.publish) apply false
 }

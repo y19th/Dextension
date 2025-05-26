@@ -22,6 +22,9 @@ kotlin {
 }
 
 mavenPublishing {
+    println("PROPERTY ${properties["mavenCentralUsername"]} name")
+    println("PROPERTY ${properties["mavenCentralPassword"]} password")
+
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
     signAllPublications()
 }

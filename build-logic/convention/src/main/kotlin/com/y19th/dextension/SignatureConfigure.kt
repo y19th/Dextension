@@ -8,7 +8,6 @@ import org.gradle.kotlin.dsl.getByType
 import org.gradle.plugins.signing.SigningExtension
 
 fun Project.defaultSignatureConfig() {
-    afterEvaluate {
         configure<SigningExtension> {
             setGradleProperty("signing.keyId")
             setGradleProperty("signing.password")
@@ -18,8 +17,6 @@ fun Project.defaultSignatureConfig() {
 
             sign(extensions.getByType<PublishingExtension>().publications)
         }
-    }
-
 }
 
 private fun Project.setGradleProperty(key: String) {

@@ -55,12 +55,12 @@ kotlin {
 
 android {
     namespace = "com.y19th.dextension"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.y19th.dextension"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        minSdk = 24
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
     }
