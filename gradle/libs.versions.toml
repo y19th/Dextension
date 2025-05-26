@@ -24,6 +24,7 @@ kotlinTest = "2.1.21"
 runner = "1.5.2"
 core = "1.5.0"
 maven-publish = "0.29.0"
+nexus-publish = "2.0.0"
 
 [libraries]
 
@@ -62,3 +63,4 @@ kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 androidKotlinMultiplatformLibrary = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish-vannitech = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+nexus-publish = { id = "io.github.gradle-nexus.publish-plugin", version.ref = "nexus-publish"}
