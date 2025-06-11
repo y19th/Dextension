@@ -8,6 +8,19 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
+/**
+* Main component that has state and events. Provides:
+ * - [state] property for subscribe on screen function.
+ * - [handleEvent] function for handling [Event] instances.
+ * - [storage] property with [ComponentEventsStorage] type.
+ *
+ * Inherited from [BaseComponent].
+ *
+ * @param componentContext context from parent
+ * @param initialState initial instance for state.
+ *
+ * @sample com.y19th.dextension.core.sample.SampleScreenComponent
+* */
 @Suppress("PropertyName")
 abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
     componentContext: ComponentContext,

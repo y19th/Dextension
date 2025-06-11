@@ -15,6 +15,7 @@ fun Project.defaultPomConfig() {
                 description.set("Decompose extensions")
                 url.set("https://github.com/y19th/Dextension")
                 version = project.findProperty("current.pom.version")?.toString()
+                groupId = "io.github.y19th"
 
 
                 licenses {

@@ -4,6 +4,9 @@ import com.arkivanov.decompose.ComponentContext
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
+/**
+*  [ScreenComponent] with provided side effects.
+* */
 abstract class ScreenWithEffectComponent<State : BaseState, Events : BaseEvents, Effect : BaseEffects>(
     componentContext: ComponentContext,
     initialState: State

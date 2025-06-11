@@ -7,6 +7,11 @@ import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.flow.filterNotNull
 import kotlin.jvm.JvmName
 
+/**
+* Interface for storage component events. Used for communication between [ScreenComponent].
+ *
+ * For example used for popping out component that located in out of module.
+* */
 interface ComponentEventsStorage {
 
     val events: StateFlow<ComponentEvent?>
@@ -15,6 +20,11 @@ interface ComponentEventsStorage {
     fun clear()
 }
 
+/**
+* Contains instance of [ComponentEventsStorage] and providing it in [ScreenComponent]. By default using [DefaultComponentEventsStorageImpl].
+ *
+ * You can provide your own storage with [provide] function.
+* */
 internal object ComponentEventsStorageProvider {
 
     private var _instance: ComponentEventsStorage = DefaultComponentEventsStorageImpl()
@@ -26,6 +36,9 @@ internal object ComponentEventsStorageProvider {
     }
 }
 
+/**
+ * Default implementation of [ComponentEventsStorage]. Used by default in [ComponentEventsStorageProvider].
+* */
 internal class DefaultComponentEventsStorageImpl : ComponentEventsStorage {
 
     private val _events = MutableStateFlow<ComponentEvent?>(null)
@@ -40,6 +53,11 @@ internal class DefaultComponentEventsStorageImpl : ComponentEventsStorage {
     }
 }
 
+/**
+ * collecting all type not null events from [ComponentEventsStorage]
+ *
+ * @param block callback on collected event.
+ * */
 @JvmName("onEvent")
 suspend fun ComponentEventsStorage.onEvent(block: (ComponentEvent) -> Unit) {
     events.filterNotNull().collect {
@@ -48,7 +66,12 @@ suspend fun ComponentEventsStorage.onEvent(block: (ComponentEvent) -> Unit) {
     }
 }
 
-@JvmName("reflectionOnEvent")
+/**
+* collecting [T] type not null events from [ComponentEventsStorage]
+ *
+ * @param block callback on collected event.
+* */
+@JvmName("filteringOnEvent")
 suspend inline fun <reified T : ComponentEvent> ComponentEventsStorage.onEvent(
     noinline block: (T) -> Unit
 ) {
@@ -58,4 +81,7 @@ suspend inline fun <reified T : ComponentEvent> ComponentEventsStorage.onEvent(
     }
 }
 
+/**
+ * Marker interface for events in [ComponentEventsStorage].
+* */
 interface ComponentEvent
