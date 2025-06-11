@@ -11,6 +11,9 @@ import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
 
+/**
+ * Cover on [Children] function.
+* */
 @Composable
 fun <C : Any, T : Any> DefaultChildren(
     stack: Value<ChildStack<C, T>>,
@@ -26,6 +29,12 @@ fun <C : Any, T : Any> DefaultChildren(
     )
 }
 
+/**
+* Used for displaying and handling state of single slot navigation component.
+ *
+ * @param slot single slot from component.
+ * @param reaction ui content if slot activated.
+* */
 @Composable
 fun <C : Any, T : Any> ReactOnSingleChildChange(
     slot: Value<ChildSlot<C, T>>,
@@ -36,6 +45,12 @@ fun <C : Any, T : Any> ReactOnSingleChildChange(
     instance.value.child?.instance?.also { reaction(it) }
 }
 
+/**
+ * Used for displaying and handling state of single slot navigation component.
+ * As reaction used [ProvideContent] function.
+ *
+ * @param slot single slot from component.
+ * */
 @Composable
 fun <C : Any, T : Screen> ReactOnSingleChildChange(
     slot: Value<ChildSlot<C, T>>

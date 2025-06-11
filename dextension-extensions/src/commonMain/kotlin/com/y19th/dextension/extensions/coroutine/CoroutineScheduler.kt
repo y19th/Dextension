@@ -3,6 +3,19 @@ package com.y19th.dextension.extensions.coroutine
 import kotlinx.coroutines.ensureActive
 import kotlin.coroutines.coroutineContext
 
+/**
+* Implementation of [Scheduler]. Used for scheduling some coroutine job.
+ *
+ * Has [recoverDelay] and [changeDelay] for manipulating delay time.
+ *
+ * For start invoking [block] you need to call [start].
+ *
+ * @param initialDelay delay time in ms between scheduling iterations.
+ * @param delayOnStart delay time in ms before first iteration.
+ * @param block evaluation block of every iteration.
+ *
+ * @sample com.y19th.dextension.extensions.sample.sampleSchedule
+* */
 class CoroutineScheduler(
     private val initialDelay: Long,
     private val delayOnStart: Long = 0,
@@ -11,7 +24,7 @@ class CoroutineScheduler(
 
     private var _delay = initialDelay
     private var _needRetry = true
-    private var _delayExpired = true
+    private var _delayExpired = false
 
     override fun changeDelay(delay: Long) {
         _delay = delay

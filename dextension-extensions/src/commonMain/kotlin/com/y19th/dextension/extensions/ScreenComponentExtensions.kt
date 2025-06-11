@@ -7,6 +7,9 @@ import com.y19th.dextension.extensions.coroutine.Scheduler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+* Providing for [ScreenComponent] default scheduling function via [CoroutineScheduler].
+* */
 fun ScreenComponent<*, *>.scheduleCoroutine(
     delay: Long,
     delayOnStart: Long = 0,

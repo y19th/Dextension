@@ -4,6 +4,9 @@ package com.y19th.dextension.extensions.property
 
 import com.y19th.dextension.core.Validator
 
+/**
+* Implementation of [Validator]. Used in [propertyValidate].
+* */
 fun PropertyValidator(): Validator = object : Validator {
     override var valid: Boolean = true
 }

@@ -8,9 +8,13 @@ import com.y19th.dextension.core.BaseState
 import com.y19th.dextension.core.EventComponent
 import com.y19th.dextension.core.ScreenComponent
 import com.y19th.dextension.core.ScreenWithEffectComponent
+import com.y19th.dextension.core.StateComponent
 import kotlinx.coroutines.CoroutineExceptionHandler
 import org.koin.core.component.KoinComponent
 
+/**
+ * Wrapper on [BaseComponent] with [KoinComponent].
+ * */
 abstract class KoinBaseComponent(
     componentContext: ComponentContext,
     coroutineExceptionHandler: CoroutineExceptionHandler? = null
@@ -19,6 +23,9 @@ abstract class KoinBaseComponent(
     coroutineExceptionHandler = coroutineExceptionHandler
 )
 
+/**
+ * Wrapper on [ScreenComponent] with [KoinComponent].
+ * */
 abstract class KoinScreenComponent<State : BaseState, in Event : BaseEvents>(
     componentContext: ComponentContext,
     initialState: State
@@ -27,12 +34,29 @@ abstract class KoinScreenComponent<State : BaseState, in Event : BaseEvents>(
     initialState = initialState
 )
 
+/**
+ * Wrapper on [StateComponent] with [KoinComponent].
+ * */
+abstract class KoinStateComponent<State : BaseState>(
+    componentContext: ComponentContext,
+    initialState: State
+) : KoinComponent, StateComponent<State>(
+    componentContext = componentContext,
+    initialState = initialState
+)
+
+/**
+ * Wrapper on [EventComponent] with [KoinComponent].
+ * */
 abstract class KoinEventComponent<Event : BaseEvents>(
     componentContext: ComponentContext
 ) : KoinComponent, EventComponent<Event>(
     componentContext = componentContext
 )
 
+/**
+ * Wrapper on [ScreenWithEffectComponent] with [KoinComponent].
+ * */
 abstract class KoinScreenWithEffectComponent<State : BaseState, Events : BaseEvents, Effect : BaseEffects>(
     componentContext: ComponentContext,
     initialState: State

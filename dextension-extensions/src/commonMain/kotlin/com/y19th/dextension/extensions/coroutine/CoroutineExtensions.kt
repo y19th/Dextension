@@ -3,7 +3,7 @@ package com.y19th.dextension.extensions.coroutine
 import kotlinx.coroutines.delay
 
 /**
- * triggers delay before evaluating block
+ * Triggers delay before evaluating block
  * */
 internal suspend inline fun afterDelay(
     millis: Long,
@@ -14,7 +14,7 @@ internal suspend inline fun afterDelay(
 }
 
 /**
- * triggers delay only after evaluating block
+ * Triggers delay only after evaluating block
  * */
 internal suspend inline fun beforeDelay(
     millis: Long,
