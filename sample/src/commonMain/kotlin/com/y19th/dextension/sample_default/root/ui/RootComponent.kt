@@ -2,7 +2,7 @@ package com.y19th.dextension.sample_default.root.ui
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.childStack
-import com.y19th.dextension.koin.components.KoinBaseComponent
+import com.y19th.dextension.koin.components.KoinNavigationComponent
 import com.y19th.dextension.koin.getScreen
 import com.y19th.dextension.sample_default.end.ui.EndScreen
 import com.y19th.dextension.sample_default.navigator.MainConfiguration
@@ -16,7 +16,7 @@ import com.y19th.dextension.sample_slot.holder.ui.SampleSlotHolderScreen
 internal class RootComponent(
     componentContext: ComponentContext,
     navigator: MainNavigator
-) : KoinBaseComponent(componentContext) {
+) : KoinNavigationComponent(componentContext) {
 
     val stack = childStack(
         source = navigator.navigation,

@@ -68,10 +68,5 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
         storage.onEvent<T>(block)
     }
 
-    protected fun launch(block: suspend CoroutineScope.() -> Unit): Job {
-        return scope.launch(block = block)
-    }
-
-
     abstract fun handleEvent(event: Event)
 }

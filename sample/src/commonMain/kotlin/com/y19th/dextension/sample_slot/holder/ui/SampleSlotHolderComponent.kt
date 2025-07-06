@@ -4,6 +4,9 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.Value
 import com.y19th.dextension.core.singleSlot
+import com.y19th.dextension.extensions.coroutine.onDefault
+import com.y19th.dextension.extensions.coroutine.onMain
+import com.y19th.dextension.extensions.coroutine.withMain
 import com.y19th.dextension.koin.components.KoinScreenComponent
 import com.y19th.dextension.koin.getScreen
 import com.y19th.dextension.sample_slot.holder.logic.SampleSlotHolderEvents
@@ -19,14 +22,17 @@ internal class SampleSlotHolderComponent(
     initialState = SampleSlotHolderState()
 ) {
     private val navigation = singleSlot(SlotConfiguration.serializer())
-    val slot: Value<ChildSlot<*, SlotScreen>> = navigation.create { _, context -> getScreen(context) }
+    val slot: Value<ChildSlot<*, SlotScreen>> =
+        navigation.create { _, context -> getScreen(context) }
 
     init {
-        launch {
+        scope.onDefault {
             handleStorageEvent<SlotNavigationEvents> {
                 when (this) {
                     SlotNavigationEvents.OnDismiss -> {
-                        navigation.dismiss()
+                        scope.onMain {
+                            navigation.dismiss()
+                        }
                     }
 
                     is SlotNavigationEvents.OnSharedStateChanged -> {

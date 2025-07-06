@@ -14,7 +14,7 @@ internal fun screenCoroutineExceptionHandler(tag: String?): CoroutineExceptionHa
         message(handlerTag, "[caught on $tag component]", LoggerLevel.Error)
         message(
             handlerTag,
-            "caught: ${throwable.stackTraceToString()}", LoggerLevel.Error
+            throwable.stackTraceToString(), LoggerLevel.Error
         )
         message(handlerTag, "-------------END_CAUGHT-------------", LoggerLevel.Error)
     }
