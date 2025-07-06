@@ -2,13 +2,13 @@ package com.y19th.dextension.core.sample
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.childStack
-import com.y19th.dextension.core.BaseComponent
+import com.y19th.dextension.core.NavigationComponent
 import com.y19th.dextension.core.ScreenComponent
 
-internal class SampleBaseComponent(
+internal class SampleNavigationComponent(
     sampleNavigator: SampleNavigator,
     componentContext: ComponentContext
-) : BaseComponent(componentContext) {
+) : NavigationComponent(componentContext) {
 
     val stack = childStack(
         source = sampleNavigator.navigation,
