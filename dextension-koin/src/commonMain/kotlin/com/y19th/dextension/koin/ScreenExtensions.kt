@@ -37,7 +37,7 @@ inline fun <reified T : Screen> KoinComponent.getScreen(
  * */
 inline fun <reified T : Screen> KoinComponent.getScreen(
     context: ComponentContext,
-    param: T
+    param: Any
 ): T {
     return get<T> { parametersOf(context, param) }
 }
