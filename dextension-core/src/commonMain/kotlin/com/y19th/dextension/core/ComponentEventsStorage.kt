@@ -8,10 +8,10 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlin.jvm.JvmName
 
 /**
-* Interface for storage component events. Used for communication between [ScreenComponent].
+ * Interface for storage component events. Used for communication between [ScreenComponent].
  *
  * For example used for popping out component that located in out of module.
-* */
+ * */
 interface ComponentEventsStorage {
 
     val events: StateFlow<ComponentEvent?>
@@ -21,10 +21,10 @@ interface ComponentEventsStorage {
 }
 
 /**
-* Contains instance of [ComponentEventsStorage] and providing it in [ScreenComponent]. By default using [DefaultComponentEventsStorageImpl].
+ * Contains instance of [ComponentEventsStorage] and providing it in [ScreenComponent]. By default using [DefaultComponentEventsStorageImpl].
  *
  * You can provide your own storage with [provide] function.
-* */
+ * */
 internal object ComponentEventsStorageProvider {
 
     private var _instance: ComponentEventsStorage = DefaultComponentEventsStorageImpl()
@@ -38,7 +38,7 @@ internal object ComponentEventsStorageProvider {
 
 /**
  * Default implementation of [ComponentEventsStorage]. Used by default in [ComponentEventsStorageProvider].
-* */
+ * */
 internal class DefaultComponentEventsStorageImpl : ComponentEventsStorage {
 
     private val _events = MutableStateFlow<ComponentEvent?>(null)
@@ -59,7 +59,7 @@ internal class DefaultComponentEventsStorageImpl : ComponentEventsStorage {
  * @param block callback on collected event.
  * */
 @JvmName("onEvent")
-suspend fun ComponentEventsStorage.onEvent(block: (ComponentEvent) -> Unit) {
+suspend fun ComponentEventsStorage.onEvent(block: suspend (ComponentEvent) -> Unit) {
     events.filterNotNull().collect {
         block(it)
         clear()
@@ -67,13 +67,13 @@ suspend fun ComponentEventsStorage.onEvent(block: (ComponentEvent) -> Unit) {
 }
 
 /**
-* collecting [T] type not null events from [ComponentEventsStorage]
+ * collecting [T] type not null events from [ComponentEventsStorage]
  *
  * @param block callback on collected event.
-* */
+ * */
 @JvmName("filteringOnEvent")
 suspend inline fun <reified T : ComponentEvent> ComponentEventsStorage.onEvent(
-    noinline block: (T) -> Unit
+    noinline block: suspend (T) -> Unit
 ) {
     events.filterIsInstance<T>().collect {
         block(it)
@@ -83,5 +83,5 @@ suspend inline fun <reified T : ComponentEvent> ComponentEventsStorage.onEvent(
 
 /**
  * Marker interface for events in [ComponentEventsStorage].
-* */
+ * */
 interface ComponentEvent

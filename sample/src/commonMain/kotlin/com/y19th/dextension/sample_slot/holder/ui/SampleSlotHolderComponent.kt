@@ -26,18 +26,14 @@ internal class SampleSlotHolderComponent(
         navigation.create { _, context -> getScreen(context) }
 
     init {
-        scope.onDefault {
-            handleStorageEvent<SlotNavigationEvents> {
-                when (this) {
-                    SlotNavigationEvents.OnDismiss -> {
-                        scope.onMain {
-                            navigation.dismiss()
-                        }
-                    }
+        handleStorageEventOnMainThread<SlotNavigationEvents> {
+            when (this) {
+                SlotNavigationEvents.OnDismiss -> {
+                    navigation.dismiss()
+                }
 
-                    is SlotNavigationEvents.OnSharedStateChanged -> {
-                        update { copy(sharedState = newValue) }
-                    }
+                is SlotNavigationEvents.OnSharedStateChanged -> {
+                    update { copy(sharedState = newValue) }
                 }
             }
         }

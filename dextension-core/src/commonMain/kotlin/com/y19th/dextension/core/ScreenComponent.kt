@@ -5,6 +5,7 @@ import com.y19th.dextension.core.util.componentCoroutineContext
 import com.y19th.dextension.core.util.defaultCoroutineScope
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -63,9 +64,17 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
     }
 
     protected suspend inline fun <reified T : ComponentEvent> handleStorageEvent(
-        noinline block: T.() -> Unit
+        noinline block: suspend T.() -> Unit
     ) {
         storage.onEvent<T>(block)
+    }
+
+    protected inline fun <reified T : ComponentEvent> handleStorageEventOnMainThread(
+        noinline block: suspend T.() -> Unit
+    ) {
+        scope.launch(Dispatchers.Main.immediate) {
+            storage.onEvent(block)
+        }
     }
 
     abstract fun handleEvent(event: Event)
