@@ -4,9 +4,6 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.slot.ChildSlot
 import com.arkivanov.decompose.value.Value
 import com.y19th.dextension.core.singleSlot
-import com.y19th.dextension.extensions.coroutine.onDefault
-import com.y19th.dextension.extensions.coroutine.onMain
-import com.y19th.dextension.extensions.coroutine.withMain
 import com.y19th.dextension.koin.components.KoinScreenComponent
 import com.y19th.dextension.koin.getScreen
 import com.y19th.dextension.sample_slot.holder.logic.SampleSlotHolderEvents
