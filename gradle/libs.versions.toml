@@ -1,14 +1,14 @@
 [versions]
-agp = "8.10.1"
+agp = "8.11.1"
 composeMultiplatform = "1.8.2"
 kotlin = "2.2.0"
 decompose = "3.3.0"
 decompose-lifecycle-coroutine = "2.5.0"
 androidx-activityCompose = "1.10.1"
 koinVersion = "4.1.0"
-kermit = "2.0.4"
+kermit = "2.0.6"
 kotlinx-coroutines = "1.10.2"
-maven-publish = "0.29.0"
+maven-publish = "0.33.0"
 
 [libraries]
 
