@@ -1,5 +1,3 @@
-import com.vanniktech.maven.publish.SonatypeHost
-
 plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.kotlinMultiplatform)
@@ -22,9 +20,6 @@ kotlin {
 }
 
 mavenPublishing {
-    println("PROPERTY ${properties["mavenCentralUsername"]} name")
-    println("PROPERTY ${properties["mavenCentralPassword"]} password")
-
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+    publishToMavenCentral()
     signAllPublications()
 }
