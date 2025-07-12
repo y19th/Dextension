@@ -63,13 +63,13 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
     }
 
     protected suspend inline fun <reified T : ComponentEvent> handleStorageEvent(
-        noinline block: suspend T.() -> Unit
+        crossinline block: suspend T.() -> Unit
     ) {
         storage.onEvent<T>(block)
     }
 
     protected inline fun <reified T : ComponentEvent> handleStorageEventOnMainThread(
-        noinline block: suspend T.() -> Unit
+        crossinline block: suspend T.() -> Unit
     ) {
         scope.launch(Dispatchers.Main.immediate) {
             handleStorageEvent<T>(block)

@@ -1,5 +1,6 @@
 package com.y19th.dextension.core
 
+import com.y19th.dextension.core.ComponentEventsStorageProvider.provide
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -73,7 +74,7 @@ suspend fun ComponentEventsStorage.onEvent(block: suspend (ComponentEvent) -> Un
  * */
 @JvmName("filteringOnEvent")
 suspend inline fun <reified T : ComponentEvent> ComponentEventsStorage.onEvent(
-    noinline block: suspend (T) -> Unit
+    crossinline block: suspend (T) -> Unit
 ) {
     events.filterIsInstance<T>().collect {
         block(it)
