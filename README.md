@@ -108,6 +108,10 @@ sourceSets {
     }
 }
 ```
+# Integration
+
+If you want to integrate this library into your project, you should install [Dextension Template Plugin](https://github.com/y19th/DextensionTemplates), which improving Dextension usage experience and allows you to write components much faster and easier.
+
 # Templates
 
 You can find in [sample](https://github.com/y19th/Dextension/tree/master/sample/src/commonMain/kotlin/com/y19th/dextension) module.
