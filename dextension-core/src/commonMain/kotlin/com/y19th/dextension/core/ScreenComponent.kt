@@ -72,7 +72,7 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
         noinline block: suspend T.() -> Unit
     ) {
         scope.launch(Dispatchers.Main.immediate) {
-            storage.onEvent(block)
+            handleStorageEvent<T>(block)
         }
     }
 
