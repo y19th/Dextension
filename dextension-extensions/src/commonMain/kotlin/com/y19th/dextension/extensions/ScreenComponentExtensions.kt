@@ -5,6 +5,7 @@ import com.y19th.dextension.core.ScreenComponent
 import com.y19th.dextension.extensions.coroutine.CoroutineScheduler
 import com.y19th.dextension.extensions.coroutine.Scheduler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 /**
@@ -14,14 +15,14 @@ fun ScreenComponent<*, *>.scheduleCoroutine(
     delay: Long,
     delayOnStart: Long = 0,
     block: suspend Scheduler.() -> Unit
-) {
+): Job {
     val scheduler = CoroutineScheduler(
         initialDelay = delay,
         delayOnStart = delayOnStart,
         block = block
     )
 
-    scope.launch(Dispatchers.Default) {
+    return scope.launch(Dispatchers.Default) {
         repeatOnLifecycle {
             scheduler.start()
         }
