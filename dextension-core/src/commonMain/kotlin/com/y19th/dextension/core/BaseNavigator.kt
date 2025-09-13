@@ -1,6 +1,7 @@
 package com.y19th.dextension.core
 
 import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.navigate
 import com.arkivanov.decompose.router.stack.pop
 
 /**
@@ -12,12 +13,17 @@ import com.arkivanov.decompose.router.stack.pop
  *
  * Sample usage:
  * @sample com.y19th.dextension.core.sample.SampleNavigator
-* */
-interface BaseNavigator<Configuration: Any> {
+ * */
+interface BaseNavigator<Configuration : Any> {
 
     val navigation: StackNavigation<Configuration>
 
-    fun pop() { navigation.pop() }
+    fun pop() {
+        navigation.pop()
+    }
+
+    fun modifyStack(block: (List<Configuration>) -> List<Configuration>) =
+        navigation.navigate(block)
 
     fun handleConfiguration(configuration: Configuration)
 }
