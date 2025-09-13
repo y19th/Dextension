@@ -11,5 +11,5 @@ import com.y19th.dextension.core.ScreenComponent
  * Covering [ScreenComponent.handleEvent] with remember block.
 * */
 @Composable
-fun <State : BaseState, Events : BaseEvents> ScreenComponent<State, Events>.rememberHandleEvents(): ((Events) -> Unit) =
-    remember { { handleEvent(it) } }
+fun <Events : BaseEvents> ScreenComponent<*, Events>.rememberHandleEvents(): ((Events) -> Unit) =
+    remember { ::handleEvent }

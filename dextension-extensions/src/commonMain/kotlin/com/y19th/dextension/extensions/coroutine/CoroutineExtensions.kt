@@ -34,7 +34,7 @@ suspend inline fun beforeDelay(
 
 /**
  * Changes [onEach] block coroutine context dispatcher on [Dispatchers.Default].
-* */
+ * */
 fun <T> Flow<T>.onDefaultDispatcher(block: suspend (T) -> Unit): Flow<T> =
     onEach(block).flowOn(Dispatchers.Default)
 
@@ -66,7 +66,7 @@ fun CoroutineScope.onLimitedDefault(block: suspend CoroutineScope.() -> Unit): J
     )
 
 /**
-* Changes dispatcher of current coroutine on [Dispatchers.Main].
-* */
-suspend fun <T> withMain(block: suspend CoroutineScope.() -> T): T =
+ * Changes dispatcher of current coroutine on [Dispatchers.Main].
+ * */
+suspend inline fun <T> withMain(noinline block: suspend CoroutineScope.() -> T): T =
     withContext(Dispatchers.Main.immediate, block)

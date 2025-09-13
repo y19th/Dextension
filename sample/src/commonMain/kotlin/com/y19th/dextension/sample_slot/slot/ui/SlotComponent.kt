@@ -17,11 +17,11 @@ internal class SlotComponent(
         when (event) {
             SlotEvents.OnIncrement -> {
                 update { copy(innerState = innerState.plus(1)) }
-                storage.handle(OnSharedStateChanged(state.value.innerState))
+                pushStorageEvent(OnSharedStateChanged(state.value.innerState))
             }
 
             SlotEvents.OnDismiss -> {
-                storage.handle(SlotNavigationEvents.OnDismiss)
+                pushStorageEvent(SlotNavigationEvents.OnDismiss)
             }
         }
     }

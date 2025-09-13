@@ -62,6 +62,10 @@ abstract class ScreenComponent<State : BaseState, in Event : BaseEvents>(
         _state.update { function(it) }
     }
 
+    protected fun pushStorageEvent(event: ComponentEvent?) {
+        storage.handle(event)
+    }
+
     protected suspend inline fun <reified T : ComponentEvent> handleStorageEvent(
         crossinline block: suspend T.() -> Unit
     ) {
