@@ -1,7 +1,7 @@
 package com.y19th.dextension.extensions.coroutine
 
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
-import kotlin.coroutines.coroutineContext
 
 /**
 * Implementation of [Scheduler]. Used for scheduling some coroutine job.
@@ -40,7 +40,7 @@ class CoroutineScheduler(
 
     override suspend fun start() {
         while (_needRetry) {
-            coroutineContext.ensureActive()
+            currentCoroutineContext().ensureActive()
             afterDelay(if (_delayExpired) _delay else delayOnStart) {
                 _delayExpired = true
                 block()

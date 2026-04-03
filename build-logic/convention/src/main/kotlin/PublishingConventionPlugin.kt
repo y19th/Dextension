@@ -9,19 +9,6 @@ class PublishingConventionPlugin : Plugin<Project> {
             pluginManager.apply("maven-publish")
             pluginManager.apply("signing")
 
-            /*
-                        configure<NexusPublishExtension> {
-                            repositories {
-                                sonatype {
-                                    nexusUrl.set(URI.create("https://s01.oss.sonatype.org/service/local/"))
-                                    snapshotRepositoryUrl.set(URI.create("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-                                    username.set(project.findProperty("ossrhUsername") as? String)
-                                    password.set(project.findProperty("ossrhPassword") as? String)
-                                }
-                            }
-                        }
-            */
-
             defaultPomConfig()
             defaultSignatureConfig()
         }

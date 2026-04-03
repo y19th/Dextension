@@ -26,7 +26,7 @@ interface ComponentEventsStorage {
  *
  * You can provide your own storage with [provide] function.
  * */
-internal object ComponentEventsStorageProvider {
+object ComponentEventsStorageProvider {
 
     private var _instance: ComponentEventsStorage = DefaultComponentEventsStorageImpl()
 

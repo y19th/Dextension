@@ -12,43 +12,43 @@ internal fun message(
     when (level) {
         LoggerLevel.Assert -> {
             Logger.a(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
 
         LoggerLevel.Debug -> {
             Logger.d(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
 
         LoggerLevel.Error -> {
             Logger.e(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
 
         LoggerLevel.Info -> {
             Logger.i(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
 
         LoggerLevel.Verbose -> {
             Logger.v(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
 
         LoggerLevel.Warning -> {
             Logger.w(
-                tag,
-                throwable
+                throwable = throwable,
+                tag = tag
             ) { message }
         }
     }
